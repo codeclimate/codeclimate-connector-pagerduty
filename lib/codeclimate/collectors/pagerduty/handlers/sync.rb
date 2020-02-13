@@ -4,7 +4,7 @@ module Codeclimate
       module Handlers
         class Sync < Handler
           def handle_request
-            manager.requests.send_request Pagerduty::Requests::FetchIncidents.new(
+            manager.requests << Pagerduty::Requests::FetchIncidents.new(
               since: request.earliest_data_cutoff,
               offset: 0,
             )

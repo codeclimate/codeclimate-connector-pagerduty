@@ -3,8 +3,9 @@ module Codeclimate
     module Pagerduty
       class Client
         HANDLERS = {
-          Codeclimate::Collectors::Requests::VerifyConfiguration => Pagerduty::Handlers::VerifyConfiguration,
-          Codeclimate::Collectors::Requests::Sync => Pagerduty::Handlers::Sync,
+          Collectors::Requests::VerifyConfiguration => Pagerduty::Handlers::VerifyConfiguration,
+          Collectors::Requests::Sync => Pagerduty::Handlers::Sync,
+          Pagerduty::Requests::FetchIncidents => Pagerduty::Handlers::FetchIncidents,
         }.freeze
 
         def initialize(configuration:, manager:)

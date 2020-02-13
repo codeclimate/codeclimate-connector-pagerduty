@@ -22,7 +22,6 @@ module Codeclimate
           end
 
           def send_message(message)
-            puts "send_message #{message} to #{manager}"
             manager.messages.send_message( message)
           end
         end

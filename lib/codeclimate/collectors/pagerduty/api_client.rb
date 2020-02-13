@@ -62,13 +62,11 @@ module Codeclimate
 
         def construct_uri(path, params = {})
           URI.parse(BASE_URL).tap do |uri|
-            puts "construct_uri: initial = #{uri.inspect}"
             if path.start_with?("/")
               uri.path = path
             else
               uri.path = "/#{path}"
             end
-            puts "construct_uri: after path set = #{uri.inspect}"
 
             if params.any?
               uri.query = URI.encode_www_form(params)

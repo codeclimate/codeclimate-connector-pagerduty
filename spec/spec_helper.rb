@@ -6,6 +6,8 @@ require "codeclimate/collectors/testing"
 
 Dir[File.expand_path("../support/**/*.rb", __FILE__)].each { |file| require file }
 
+ENV["TZ"] = "UTC"
+
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
   config.include(Codeclimate::Collectors::Testing)

@@ -5,7 +5,6 @@ module Codeclimate
         class VerifyConfiguration < Handler
           def handle_request
             if !configuration.valid?
-              puts "sending the error messag for missing api token"
               send_message(
                 Messages::ConfigurationVerification.new(
                   state: Messages::ConfigurationVerification::ERROR,
