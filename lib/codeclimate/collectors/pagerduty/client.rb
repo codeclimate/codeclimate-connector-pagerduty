@@ -4,6 +4,7 @@ module Codeclimate
       class Client
         HANDLERS = {
           Codeclimate::Collectors::Requests::VerifyConfiguration => Pagerduty::Handlers::VerifyConfiguration,
+          Codeclimate::Collectors::Requests::Sync => Pagerduty::Handlers::Sync,
         }.freeze
 
         def initialize(configuration:, manager:)
