@@ -1,7 +1,6 @@
 require "codeclimate-collector-manager"
 
 require "codeclimate/collectors/pagerduty/handlers"
-require "codeclimate/collectors/pagerduty/requests"
 
 require "codeclimate/collectors/pagerduty/api_client"
 require "codeclimate/collectors/pagerduty/client"

@@ -4,7 +4,6 @@ module Codeclimate
       module Handlers
         RSpec.describe VerifyConfiguration do
           let(:manager) { stub_manager }
-          let(:request) { Collectors::Requests::VerifyConfiguration.new }
 
           it "handles a config missing a token" do
             handler = described_class.new(
@@ -12,10 +11,9 @@ module Codeclimate
                 Codeclimate::Collectors::Configuration.new({}),
               ),
               manager: manager,
-              request: request,
             )
 
-            handler.handle_request
+            handler.run
 
             expect(manager.messages.received_messages.count).to eq(1)
             msg = manager.messages.received_messages.first
@@ -28,13 +26,12 @@ module Codeclimate
             handler = described_class.new(
               configuration: stub_wrapped_configuration,
               manager: manager,
-              request: request,
             )
 
             stub_request(:get, "https://api.pagerduty.com/abilities").
               to_return(status: 401, body: "")
 
-            handler.handle_request
+            handler.run
 
             expect(manager.messages.received_messages.count).to eq(1)
             msg = manager.messages.received_messages.first
@@ -47,13 +44,12 @@ module Codeclimate
             handler = described_class.new(
               configuration: stub_wrapped_configuration,
               manager: manager,
-              request: request,
             )
 
             stub_request(:get, "https://api.pagerduty.com/abilities").
               to_return(body: JSON.generate({}))
 
-            handler.handle_request
+            handler.run
 
             expect(manager.messages.received_messages.count).to eq(1)
             msg = manager.messages.received_messages.first

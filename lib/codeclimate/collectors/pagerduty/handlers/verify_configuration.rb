@@ -3,7 +3,7 @@ module Codeclimate
     module Pagerduty
       module Handlers
         class VerifyConfiguration < Handler
-          def handle_request
+          def run
             if !configuration.valid?
               send_message(
                 Messages::ConfigurationVerification.new(

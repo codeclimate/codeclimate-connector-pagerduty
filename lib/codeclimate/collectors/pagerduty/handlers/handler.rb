@@ -3,19 +3,18 @@ module Codeclimate
     module Pagerduty
       module Handlers
         class Handler
-          def initialize(configuration:, manager:, request:)
+          def initialize(configuration:, manager:)
             @configuration = configuration
             @manager = manager
-            @request = request
           end
 
-          def handle_request
+          def run
             raise NotImplementedError, "subclasses should implement this"
           end
 
           protected
 
-          attr_reader :configuration, :manager, :request
+          attr_reader :configuration, :manager
 
           def api_client
             @api_client ||= ApiClient.new(configuration.api_token)
