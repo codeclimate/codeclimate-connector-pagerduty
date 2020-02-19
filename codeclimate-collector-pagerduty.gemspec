@@ -6,16 +6,15 @@ Gem::Specification.new do |spec|
   spec.version       = File.read(File.expand_path("../VERSION", __FILE__)).strip
   spec.authors       = ["Code Climate"]
   spec.email         = ["hello@codeclimate.com"]
-  spec.license       = "AGPL"
+  spec.license       = "Nonstandard"
   spec.summary       = "Code Climate PagerDuty Collector"
   spec.description   = "Collector for integrating PagerDuty data into Velocity"
   spec.homepage      = "https://codeclimate.com"
 
-  spec.files         += Dir["{lib}/**/*"]
+  spec.files         += Dir["VERSION", "lib/**/*"]
   spec.require_paths = ["lib"]
 
-  # uncomment once not using local directory in Gemfile
-  # spec.add_dependency "codeclimate-collector-manager"
+  spec.add_dependency "codeclimate-collector-manager"
 
   spec.add_development_dependency "rspec"
   spec.add_development_dependency "pry"
