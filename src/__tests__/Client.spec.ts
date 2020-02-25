@@ -1,5 +1,6 @@
-import { Client } from "../Client"
 import { buildFakeManager, buildFakeLogger } from "codeclimate-collector-sdk/lib/TestHelpers"
+
+import { Client } from "../Client"
 
 describe(Client, () => {
   describe("verifyConfiguration", () => {
@@ -29,6 +30,11 @@ describe(Client, () => {
         expect(result.errorMessages).toBeDefined()
         expect(result.errorMessages!.length).toBe(1)
       })
+    })
+  })
+
+  describe("syncStream", () => {
+    test("it calls the syncer", () => {
     })
   })
 })

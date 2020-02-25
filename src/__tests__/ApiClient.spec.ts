@@ -1,4 +1,5 @@
 import * as nock from "nock"
+
 import { ApiClient, ResponseError } from "../ApiClient"
 
 describe(ApiClient, () => {
@@ -8,7 +9,7 @@ describe(ApiClient, () => {
   describe(".get", () => {
     test("basic request/response works", () => {
       nock("https://api.pagerduty.com").
-        get("/incidents?page=2").
+        get("/incidents?limit=2").
         reply(
           200,
           JSON.stringify({
@@ -20,7 +21,7 @@ describe(ApiClient, () => {
 
       const client = new ApiClient("fake-token")
 
-      return client.get("incidents", { page: 2 }).then((resp) => {
+      return client.get("incidents", { limit: 2 }).then((resp) => {
         expect(resp["incidents"]).toEqual([
           { id: "abc123" },
         ])

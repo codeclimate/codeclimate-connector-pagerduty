@@ -50,8 +50,6 @@ export class ApiClient {
           },
         },
         (resp) => {
-          console.log("got resp callback status", resp.statusCode)
-
           if (resp.statusCode && resp.statusCode >= 500) {
             reject(new ServerError("Server error"))
           } else if (resp.statusCode === 401) {
