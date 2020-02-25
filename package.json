@@ -5,7 +5,10 @@
   "license": "AGPL-3.0-only",
   "scripts": {
     "build": "tsc",
-    "test": "jest"
+    "test": "jest",
+    "clean": "rm -rf ./lib/",
+    "prepare": "yarn clean && yarn build",
+    "prepublishOnly": "yarn test"
   },
   "files": [
     "lib/**/*",
@@ -14,7 +17,7 @@
   ],
   "main": "lib/index.js",
   "dependencies": {
-    "codeclimate-collector-sdk": "file:../codeclimate-collector-sdk"
+    "codeclimate-collector-sdk": "^0.0.1"
   },
   "devDependencies": {
     "@types/jest": "^25.1.3",
