@@ -36,6 +36,9 @@ called `collector-config.json` with the that token:
 }
 ```
 
+To ensure the project's current code has been compiled into `./lib` for
+execution, run `yarn build`.
+
 Then, to run a sync, run (replace `YYYY-MM-DD` with the date you want to sync
 back to):
 
