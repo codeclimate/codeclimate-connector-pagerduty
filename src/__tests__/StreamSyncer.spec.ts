@@ -3,6 +3,8 @@ import { buildFakeManager, buildFakeLogger, FakeManager } from "codeclimate-coll
 
 import { StreamSyncer } from "../StreamSyncer"
 
+nock.disableNetConnect()
+
 describe(StreamSyncer, () => {
   test("it syncs 2 pages of incidents", () => {
     nock("https://api.pagerduty.com").

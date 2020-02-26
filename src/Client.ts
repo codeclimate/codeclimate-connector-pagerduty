@@ -4,12 +4,14 @@ import {
   VerifyConfigurationResult,
 } from "codeclimate-collector-sdk"
 
+import { ConfigurationVerifier } from "./ConfigurationVerifier"
 import { StreamSyncer } from "./StreamSyncer"
 
 export class Client extends AbstractClient implements ClientInterface {
   async verifyConfiguration(): Promise<VerifyConfigurationResult> {
-    this.logger.debug("TODO - implement verifyConfiguration")
-    return Promise.resolve({ isValid: true })
+    const verifier = new ConfigurationVerifier(this.configuration, this.logger)
+
+    return verifier.run()
   }
 
   async syncStream(_stream: object | null, earliestDataCutoff: Date): Promise<void> {

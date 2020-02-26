@@ -2,56 +2,45 @@ import { buildFakeManager, buildFakeLogger } from "codeclimate-collector-sdk/lib
 
 import { Client } from "../Client"
 import { StreamSyncer } from "../StreamSyncer"
+import { ConfigurationVerifier } from "../ConfigurationVerifier"
 
 jest.mock("../StreamSyncer")
+jest.mock("../ConfigurationVerifier")
 
 describe(Client, () => {
+  function buildClient(): Client {
+    return new Client(
+      new Map([
+        ["api_token", "fake-key"],
+      ]),
+      buildFakeManager(),
+      buildFakeLogger(),
+    )
+  }
+
   describe("verifyConfiguration", () => {
-    test("says valid config is valid", () => {
-      const client = new Client(
-        new Map([
-          ["api_key", "fake-key"],
-        ]),
-        buildFakeManager(),
-        buildFakeLogger(),
-      )
+    test("it calls the verifier", () => {
+      const client = buildClient()
 
-      return client.verifyConfiguration().then((result) => {
-        expect(result.isValid).toBe(true)
-      })
-    })
-
-    test.skip("says config missing api key is invalid", () => {
-      const client = new Client(
-        new Map(),
-        buildFakeManager(),
-        buildFakeLogger(),
-      )
-
-      return client.verifyConfiguration().then((result) => {
-        expect(result.isValid).toBe(false)
-        expect(result.errorMessages).toBeDefined()
-        expect(result.errorMessages!.length).toBe(1)
+      return client.verifyConfiguration().then(() => {
+        const mock = (ConfigurationVerifier as any).mock
+        expect(mock.calls.length).toBe(1)
+        expect(mock.calls[0]).toEqual([
+          client.configuration, client.logger
+        ])
       })
     })
   })
 
   describe("syncStream", () => {
     test("it calls the syncer", () => {
-      const client = new Client(
-        new Map([
-          ["api_key", "fake-key"],
-        ]),
-        buildFakeManager(),
-        buildFakeLogger(),
-      )
+      const client = buildClient()
 
       const stream = null
       const cutoff = new Date()
 
       return client.syncStream(stream, cutoff).then(() => {
         const mock = (StreamSyncer as any).mock
-        console.log((StreamSyncer as any).mock.calls)
         expect(mock.calls.length).toBe(1)
         expect(mock.calls[0]).toEqual([
           client.configuration, client.manager, client.logger, cutoff
