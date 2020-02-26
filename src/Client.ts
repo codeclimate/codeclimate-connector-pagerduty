@@ -7,12 +7,12 @@ import {
 import { StreamSyncer } from "./StreamSyncer"
 
 export class Client extends AbstractClient implements ClientInterface {
-  verifyConfiguration(): Promise<VerifyConfigurationResult> {
+  async verifyConfiguration(): Promise<VerifyConfigurationResult> {
     this.logger.debug("TODO - implement verifyConfiguration")
     return Promise.resolve({ isValid: true })
   }
 
-  syncStream(_stream: object | null, earliestDataCutoff: Date): Promise<void> {
+  async syncStream(_stream: object | null, earliestDataCutoff: Date): Promise<void> {
     const syncer = new StreamSyncer(
       this.configuration,
       this.manager,
