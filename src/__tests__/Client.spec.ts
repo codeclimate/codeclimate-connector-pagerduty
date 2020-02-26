@@ -1,6 +1,9 @@
 import { buildFakeManager, buildFakeLogger } from "codeclimate-collector-sdk/lib/TestHelpers"
 
 import { Client } from "../Client"
+import { StreamSyncer } from "../StreamSyncer"
+
+jest.mock("../StreamSyncer")
 
 describe(Client, () => {
   describe("verifyConfiguration", () => {
@@ -35,6 +38,25 @@ describe(Client, () => {
 
   describe("syncStream", () => {
     test("it calls the syncer", () => {
+      const client = new Client(
+        new Map([
+          ["api_key", "fake-key"],
+        ]),
+        buildFakeManager(),
+        buildFakeLogger(),
+      )
+
+      const stream = null
+      const cutoff = new Date()
+
+      return client.syncStream(stream, cutoff).then(() => {
+        const mock = (StreamSyncer as any).mock
+        console.log((StreamSyncer as any).mock.calls)
+        expect(mock.calls.length).toBe(1)
+        expect(mock.calls[0]).toEqual([
+          client.configuration, client.manager, client.logger, cutoff
+        ])
+      })
     })
   })
 })
