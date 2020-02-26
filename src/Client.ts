@@ -12,7 +12,7 @@ export class Client extends AbstractClient implements ClientInterface {
     return Promise.resolve({ isValid: true })
   }
 
-  syncStream(_streamId: string | null, earliestDataCutoff: Date): Promise<void> {
+  syncStream(_stream: object | null, earliestDataCutoff: Date): Promise<void> {
     const syncer = new StreamSyncer(
       this.configuration,
       this.manager,

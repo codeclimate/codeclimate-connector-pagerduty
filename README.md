@@ -40,7 +40,7 @@ Then, to run a sync, run (replace `YYYY-MM-DD` with the date you want to sync
 back to):
 
 ```
-yarn run codeclimate-collector sync-stream pagerduty collector-config.json _ YYYY-MM-DD
+yarn run codeclimate-collector sync-stream pagerduty collector-config.json null YYYY-MM-DD
 ```
 
 [sdk]: https://github.com/codeclimate/codeclimate-collector-sdk
