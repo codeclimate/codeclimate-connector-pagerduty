@@ -1,6 +1,6 @@
 {
   "name": "codeclimate-collector-pagerduty",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "The Code Climate Collector for PagerDuty",
   "license": "AGPL-3.0-only",
   "scripts": {
