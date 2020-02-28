@@ -2,6 +2,7 @@ import {
   AbstractClient,
   ClientInterface,
   VerifyConfigurationResult,
+  Stream,
 } from "codeclimate-collector-sdk"
 
 import { ConfigurationVerifier } from "./ConfigurationVerifier"
@@ -14,10 +15,27 @@ export class Client extends AbstractClient implements ClientInterface {
     return verifier.run()
   }
 
-  async syncStream(_stream: object | null, earliestDataCutoff: Date): Promise<void> {
+  // AFAICT the PagerDuty API reveals no details about the name of the account
+  // the token is from, so we just hard-code a single Stream, and ignore the
+  // stream argument to syncStream
+  async discoverStreams(): Promise<void> {
+    return new Promise((resolve, _reject) => {
+      this.recordProducer.produce({
+        type: "Stream",
+        attributes: {
+          id: "unavailable",
+          name: "PagerDuty Account",
+        }
+      })
+
+      resolve()
+    })
+  }
+
+  async syncStream(_stream: Stream, earliestDataCutoff: Date): Promise<void> {
     const syncer = new StreamSyncer(
       this.configuration,
-      this.manager,
+      this.recordProducer,
       this.logger,
       earliestDataCutoff,
     )

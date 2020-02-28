@@ -16,7 +16,7 @@ describe(ConfigurationVerifier, () => {
 
     const verifier = new ConfigurationVerifier(
       new Map([
-        ["api_token", "fake-key"],
+        ["apiToken", "fake-key"],
       ]),
       buildFakeLogger(),
     )
@@ -29,7 +29,7 @@ describe(ConfigurationVerifier, () => {
   test("says config missing api key is invalid", () => {
     const verifier = new ConfigurationVerifier(
       new Map([
-        ["api_token", "fake-key"],
+        ["apiToken", "fake-key"],
       ]),
       buildFakeLogger(),
     )
@@ -51,7 +51,7 @@ describe(ConfigurationVerifier, () => {
 
     const verifier = new ConfigurationVerifier(
       new Map([
-        ["api_token", "fake-key"],
+        ["apiToken", "fake-key"],
       ]),
       buildFakeLogger(),
     )

@@ -1,4 +1,4 @@
-import { ClientConfiguration, Manager, Logger } from "codeclimate-collector-sdk"
+import { ClientConfiguration, RecordProducer, Logger } from "codeclimate-collector-sdk"
 
 import { ApiClient } from "./ApiClient"
 
@@ -15,13 +15,13 @@ export class StreamSyncer {
 
   constructor(
     public configuration: ClientConfiguration,
-    public manager: Manager,
+    public recordProducer: RecordProducer,
     public logger: Logger,
     public earliestDataCutoff: Date
   ) {
-    assertIsString(configuration.get("api_token"), "api_token should be in config")
+    assertIsString(configuration.get("apiToken"), "apiToken should be in config")
 
-    this.apiClient = new ApiClient(configuration.get("api_token"))
+    this.apiClient = new ApiClient(configuration.get("apiToken"))
   }
 
   public run(): Promise<void> {
@@ -55,16 +55,16 @@ export class StreamSyncer {
   // https://api-reference.pagerduty.com/#!/Incidents/get_incidents
   private processIncident(incident: object) {
     if (new Date(incident["created_at"]) >= this.earliestDataCutoff) {
-      this.manager.messages.sendMessage({
+      this.recordProducer.produce({
         type: "Incident",
         attributes: {
           id: incident["id"],
           status: incident["status"],
           number: incident["incident_number"],
           title: incident["title"],
-          created_at: incident["created_at"],
-          html_url: incident["html_url"],
-          self_url: incident["self"],
+          createdAt: incident["created_at"],
+          htmlUrl: incident["html_url"],
+          selfUrl: incident["self"],
         }
       })
     }

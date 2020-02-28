@@ -9,7 +9,7 @@ Expects configuration of the following schema:
 
 ```
 {
-  api_token: "your_v2_api_token" # only needs read-only access
+  apiToken: "your_v2_api_token" # only needs read-only access
 }
 ```
 
@@ -32,7 +32,7 @@ called `collector-config.json` with the that token:
 
 ```json
 {
-  "api_token": "YOUR_TOKEN"
+  "apiToken": "YOUR_TOKEN"
 }
 ```
 
@@ -43,7 +43,7 @@ Then, to run a sync, run (replace `YYYY-MM-DD` with the date you want to sync
 back to):
 
 ```
-yarn run codeclimate-collector sync-stream pagerduty collector-config.json null YYYY-MM-DD
+yarn run codeclimate-collector sync-stream pagerduty collector-config.json '{"type": "Stream", "attributes":{"id":"1", "name":"Account"}}' YYYY-MM-DD
 ```
 
 [sdk]: https://github.com/codeclimate/codeclimate-collector-sdk

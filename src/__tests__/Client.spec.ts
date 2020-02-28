@@ -1,4 +1,5 @@
-import { buildFakeManager, buildFakeLogger } from "codeclimate-collector-sdk/lib/TestHelpers"
+import { Stream } from "codeclimate-collector-sdk"
+import { buildFakeRecordProducer, buildFakeLogger, buildFakeStateManager } from "codeclimate-collector-sdk/lib/TestHelpers"
 
 import { Client } from "../Client"
 import { StreamSyncer } from "../StreamSyncer"
@@ -11,9 +12,10 @@ describe(Client, () => {
   function buildClient(): Client {
     return new Client(
       new Map([
-        ["api_token", "fake-key"],
+        ["apiToken", "fake-key"],
       ]),
-      buildFakeManager(),
+      buildFakeRecordProducer(),
+      buildFakeStateManager(),
       buildFakeLogger(),
     )
   }
@@ -36,14 +38,20 @@ describe(Client, () => {
     test("it calls the syncer", () => {
       const client = buildClient()
 
-      const stream = null
+      const stream = new Stream({
+        type: "Stream",
+        attributes: {
+          id: "unknown",
+          name: "PagerDuty account"
+        }
+      })
       const cutoff = new Date()
 
       return client.syncStream(stream, cutoff).then(() => {
         const mock = (StreamSyncer as any).mock
         expect(mock.calls.length).toBe(1)
         expect(mock.calls[0]).toEqual([
-          client.configuration, client.manager, client.logger, cutoff
+          client.configuration, client.recordProducer, client.logger, cutoff
         ])
       })
     })

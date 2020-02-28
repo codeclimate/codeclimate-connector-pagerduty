@@ -13,7 +13,7 @@ export class ConfigurationVerifier {
     if (!this.apiTokenPresent()) {
       return Promise.resolve({
         isValid: false,
-        errorMessages: ["api_token must be present"],
+        errorMessages: ["apiToken must be present"],
       })
     }
 
@@ -36,10 +36,10 @@ export class ConfigurationVerifier {
   }
 
   private apiTokenPresent() {
-    return typeof this.configuration.get("api_token") === "string"
+    return typeof this.configuration.get("apiToken") === "string"
   }
 
   private buildApiClient() {
-    return new ApiClient(this.configuration.get("api_token") as string)
+    return new ApiClient(this.configuration.get("apiToken") as string)
   }
 }
