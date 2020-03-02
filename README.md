@@ -36,14 +36,12 @@ called `collector-config.json` with the that token:
 }
 ```
 
-To ensure the project's current code has been compiled into `./lib` for
-execution, run `yarn build`.
-
-Then, to run a sync, run (replace `YYYY-MM-DD` with the date you want to sync
-back to):
+There are several make rules to run different commands easily:
 
 ```
-yarn run codeclimate-collector sync-stream pagerduty collector-config.json '{"type": "Stream", "attributes":{"id":"1", "name":"Account"}}' YYYY-MM-DD
+make verify-configuration
+make discover-streams
+make sync-stream
 ```
 
 [sdk]: https://github.com/codeclimate/codeclimate-collector-sdk
