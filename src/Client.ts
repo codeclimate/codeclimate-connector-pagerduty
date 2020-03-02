@@ -24,6 +24,7 @@ export class Client extends AbstractClient implements ClientInterface {
         type: "Stream",
         attributes: {
           id: "unavailable",
+          self: "https://pagerduty.com",
           name: "PagerDuty Account",
         }
       })

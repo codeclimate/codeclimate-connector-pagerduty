@@ -15,12 +15,12 @@ describe(StreamSyncer, () => {
           incidents: [
             {
               id: "abc123",
+              self: "https://example.com/incident/42",
               status: "acknowledged",
               incident_number: 42,
               title: "incident 42",
               created_at: new Date().toISOString(),
               html_url: "https://example.com",
-              self: "https://example.com/",
             },
           ],
           more: true,
@@ -35,12 +35,12 @@ describe(StreamSyncer, () => {
           incidents: [
             {
               id: "def456",
+              self: "https://example.com/incident/41",
               status: "resolved",
               incident_number: 41,
               title: "incident 41",
               created_at: new Date().toISOString(),
               html_url: "https://example.com",
-              self: "https://example.com/",
             },
           ],
           more: false,

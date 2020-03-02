@@ -42,6 +42,7 @@ describe(Client, () => {
         type: "Stream",
         attributes: {
           id: "unknown",
+          self: "https://pagerduty.com",
           name: "PagerDuty account"
         }
       })

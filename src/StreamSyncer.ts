@@ -59,12 +59,12 @@ export class StreamSyncer {
         type: "Incident",
         attributes: {
           id: incident["id"],
+          self: incident["self"],
           status: incident["status"],
           number: incident["incident_number"],
           title: incident["title"],
           createdAt: incident["created_at"],
           htmlUrl: incident["html_url"],
-          selfUrl: incident["self"],
         }
       })
     }
