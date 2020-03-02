@@ -48,4 +48,6 @@ yarn run codeclimate-collector sync-stream pagerduty collector-config.json '{"ty
 
 [sdk]: https://github.com/codeclimate/codeclimate-collector-sdk
 
+## Development
 
+See [`DEVELOPERS.md`](DEVELOPERS.md)
