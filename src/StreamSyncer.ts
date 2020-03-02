@@ -1,4 +1,9 @@
-import { ClientConfiguration, RecordProducer, Logger } from "codeclimate-collector-sdk"
+import {
+  ClientConfiguration,
+  Logger,
+  RecordProducer,
+  StateManager,
+} from "codeclimate-collector-sdk"
 
 import { ApiClient } from "./ApiClient"
 
@@ -16,6 +21,7 @@ export class StreamSyncer {
   constructor(
     public configuration: ClientConfiguration,
     public recordProducer: RecordProducer,
+    public stateManager: StateManager,
     public logger: Logger,
     public earliestDataCutoff: Date
   ) {
@@ -25,7 +31,14 @@ export class StreamSyncer {
   }
 
   public run(): Promise<void> {
-    return this.processPage(1)
+    let startPage = 1
+    let state = this.stateManager.get()
+
+    if (state && state.metadata) {
+      startPage = state.metadata["nextPage"]
+    }
+
+    return this.processPage(startPage)
   }
 
   private processPage(page: number): Promise<void> {
@@ -45,6 +58,11 @@ export class StreamSyncer {
         incidents.length > 0 &&
         new Date(incidents[incidents.length - 1]["created_at"]) >= this.earliestDataCutoff
       ) {
+        this.stateManager.set({
+          checkpointTime: new Date(incidents[incidents.length - 1]["created_at"]),
+          metadata: { nextPage: page + 1 },
+        })
+
         return this.processPage(page + 1)
       } else {
         return

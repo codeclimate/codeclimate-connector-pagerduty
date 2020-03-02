@@ -1,5 +1,9 @@
 import { Stream } from "codeclimate-collector-sdk"
-import { buildFakeRecordProducer, buildFakeLogger, buildFakeStateManager } from "codeclimate-collector-sdk/lib/TestHelpers"
+import {
+  buildFakeLogger,
+  buildFakeRecordProducer,
+  buildFakeStateManager,
+} from "codeclimate-collector-sdk/lib/TestHelpers"
 
 import { Client } from "../Client"
 import { StreamSyncer } from "../StreamSyncer"
@@ -52,7 +56,7 @@ describe(Client, () => {
         const mock = (StreamSyncer as any).mock
         expect(mock.calls.length).toBe(1)
         expect(mock.calls[0]).toEqual([
-          client.configuration, client.recordProducer, client.logger, cutoff
+          client.configuration, client.recordProducer, client.stateManager, client.logger, cutoff
         ])
       })
     })

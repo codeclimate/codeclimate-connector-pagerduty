@@ -1,5 +1,9 @@
 import * as nock from "nock"
-import { buildFakeRecordProducer, buildFakeLogger } from "codeclimate-collector-sdk/lib/TestHelpers"
+import {
+  buildFakeRecordProducer,
+  buildFakeStateManager,
+  buildFakeLogger,
+} from "codeclimate-collector-sdk/lib/TestHelpers"
 
 import { StreamSyncer } from "../StreamSyncer"
 
@@ -48,9 +52,11 @@ describe(StreamSyncer, () => {
       )
 
     const recordProducer = buildFakeRecordProducer()
+    const stateManager = buildFakeStateManager()
     const syncer = new StreamSyncer(
       new Map([["apiToken", "fake-token"]]),
       recordProducer,
+      stateManager,
       buildFakeLogger(),
       new Date(new Date().valueOf() - 100_000_000),
     )

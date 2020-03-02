@@ -37,6 +37,7 @@ export class Client extends AbstractClient implements ClientInterface {
     const syncer = new StreamSyncer(
       this.configuration,
       this.recordProducer,
+      this.stateManager,
       this.logger,
       earliestDataCutoff,
     )
