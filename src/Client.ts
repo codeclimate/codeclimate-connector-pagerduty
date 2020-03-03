@@ -3,7 +3,7 @@ import {
   ClientInterface,
   VerifyConfigurationResult,
   Stream,
-} from "codeclimate-collector-sdk"
+} from "codeclimate-connector-sdk"
 
 import { ConfigurationVerifier } from "./ConfigurationVerifier"
 import { StreamSyncer } from "./StreamSyncer"

@@ -3,7 +3,7 @@ import {
   Logger,
   RecordProducer,
   StateManager,
-} from "codeclimate-collector-sdk"
+} from "codeclimate-connector-sdk"
 
 import { ApiClient } from "./ApiClient"
 

@@ -790,10 +790,10 @@ co@^4.6.0:
   resolved "https://registry.yarnpkg.com/co/-/co-4.6.0.tgz#6ea6bdf3d853ae54ccb8e47bfa0bf3f9031fb184"
   integrity sha1-bqa989hTrlTMuOR7+gvz+QMfsYQ=
 
-codeclimate-collector-sdk@^0.0:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/codeclimate-collector-sdk/-/codeclimate-collector-sdk-0.0.5.tgz#57607fe2225ee87b6f7be5622c257aae4d583aba"
-  integrity sha512-mkl9AY4/aRMwH+7mRlBOKFkik3crpTnBvghGbtzd4OWjueneNtWND0GilJBVcvGTR5ZEjoQn5cMx9ylOe0pdLQ==
+codeclimate-connector-sdk@^0.0:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/codeclimate-connector-sdk/-/codeclimate-connector-sdk-0.0.1.tgz#00914ecdcafc4439053200f15d4292c88e642eeb"
+  integrity sha512-ZInybzmjFw8lH7PYohg5eGlxpSu0aHB/rc7Thx4EEUSPXv0zfAOJCsUhinf4NhhtUPHAAfgIFxd8+paubIgIHQ==
   dependencies:
     ajv "^6.11.0"
     yargs-parser "^17.0.0"

@@ -1,6 +1,6 @@
-# Code Climate Collector: PagerDuty
+# Code Climate Connector: PagerDuty
 
-A collector integration for Code Climate Velocity to collect data from
+A connector integration for Code Climate Velocity to collect data from
 [PagerDuty](https://pagerduty.com).
 
 ## Configuration
@@ -9,7 +9,7 @@ Expects configuration of the following schema:
 
 ```
 {
-  apiToken: "your_v2_api_token" # only needs read-only access
+  "apiToken": "your_v2_api_token" # only needs read-only access
 }
 ```
 
@@ -22,13 +22,13 @@ See [PagerDuty's docs][pd_api_support] for guidance on creating API keys.
 Clone this repo, run `yarn install` to install dependencies. `yarn test` will
 run unit tests.
 
-## Running the collector locally
+## Running the connector locally
 
-To run the collector in an integration environment, the
-[`codeclimate-collector-sdk`][sdk] provides a CLI you can use.
+To run the connector in an integration environment, the
+[`codeclimate-connector-sdk`][sdk] provides a CLI you can use.
 
 First, generate a PagerDuty token, and write a file in this project's directory
-called `collector-config.json` with the that token:
+called `connector-config.json` with the token:
 
 ```json
 {
@@ -44,7 +44,7 @@ make discover-streams
 make sync-stream
 ```
 
-[sdk]: https://github.com/codeclimate/codeclimate-collector-sdk
+[sdk]: https://github.com/codeclimate/codeclimate-connector-sdk
 
 ## Development
 

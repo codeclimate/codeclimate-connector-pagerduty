@@ -1,7 +1,7 @@
 {
-  "name": "codeclimate-collector-pagerduty",
-  "version": "0.0.5",
-  "description": "The Code Climate Collector for PagerDuty",
+  "name": "codeclimate-connector-pagerduty",
+  "version": "0.0.1",
+  "description": "The Code Climate Connector for PagerDuty",
   "license": "AGPL-3.0-only",
   "scripts": {
     "build": "tsc",
@@ -17,7 +17,7 @@
   ],
   "main": "lib/index.js",
   "dependencies": {
-    "codeclimate-collector-sdk": "^0.0"
+    "codeclimate-connector-sdk": "^0.0"
   },
   "devDependencies": {
     "@types/jest": "^25.1.3",

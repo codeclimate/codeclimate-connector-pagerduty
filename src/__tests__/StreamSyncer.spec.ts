@@ -3,7 +3,7 @@ import {
   buildFakeRecordProducer,
   buildFakeStateManager,
   buildFakeLogger,
-} from "codeclimate-collector-sdk/lib/TestHelpers"
+} from "codeclimate-connector-sdk/lib/TestHelpers"
 
 import { StreamSyncer } from "../StreamSyncer"
 

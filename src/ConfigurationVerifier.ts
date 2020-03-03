@@ -1,4 +1,4 @@
-import { ClientConfiguration, Logger, VerifyConfigurationResult } from "codeclimate-collector-sdk"
+import { ClientConfiguration, Logger, VerifyConfigurationResult } from "codeclimate-connector-sdk"
 
 import { ApiClient, ResponseError } from "./ApiClient"
 

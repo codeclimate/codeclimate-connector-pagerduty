@@ -1,5 +1,5 @@
 import * as nock from "nock"
-import { buildFakeLogger } from "codeclimate-collector-sdk/lib/TestHelpers"
+import { buildFakeLogger } from "codeclimate-connector-sdk/lib/TestHelpers"
 
 import { ConfigurationVerifier } from "../ConfigurationVerifier"
 
