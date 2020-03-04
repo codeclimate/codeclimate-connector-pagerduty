@@ -37,7 +37,7 @@ sync-stream: build
 		codeclimate-connector sync-stream \
 		pagerduty \
 		connector-config.json \
-		'{"type": "Stream", "attributes":{"id":"1", "self": "https://pagerduty.com", "name":"Account"}}' \
+		'{"_type": "Stream", "id":"1", "self": "https://pagerduty.com", "name":"Account"}' \
 		2020-01-01
 
 

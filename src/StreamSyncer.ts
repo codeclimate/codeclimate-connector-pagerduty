@@ -74,8 +74,8 @@ export class StreamSyncer {
   private processIncident(incident: object) {
     if (new Date(incident["created_at"]) >= this.earliestDataCutoff) {
       this.recordProducer.produce({
-        type: "Incident",
-        attributes: {
+        record: {
+          _type: "Incident",
           id: incident["id"],
           self: incident["self"],
           status: incident["status"],

@@ -21,8 +21,8 @@ export class Client extends AbstractClient implements ClientInterface {
   async discoverStreams(): Promise<void> {
     return new Promise((resolve, _reject) => {
       this.recordProducer.produce({
-        type: "Stream",
-        attributes: {
+        record: {
+          _type: "Stream",
           id: "unavailable",
           self: "https://pagerduty.com",
           name: "PagerDuty Account",

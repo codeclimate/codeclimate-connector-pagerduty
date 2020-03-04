@@ -43,12 +43,10 @@ describe(Client, () => {
       const client = buildClient()
 
       const stream = new Stream({
-        type: "Stream",
-        attributes: {
-          id: "unknown",
-          self: "https://pagerduty.com",
-          name: "PagerDuty account"
-        }
+        _type: "Stream",
+        id: "unknown",
+        self: "https://pagerduty.com",
+        name: "PagerDuty account"
       })
       const cutoff = new Date()
 
