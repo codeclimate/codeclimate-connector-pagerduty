@@ -25,9 +25,9 @@ export class StreamSyncer {
     public logger: Logger,
     public earliestDataCutoff: Date
   ) {
-    assertIsString(configuration.get("apiToken"), "apiToken should be in config")
+    assertIsString(process.env["API_TOKEN"], "apiToken should be in config")
 
-    this.apiClient = new ApiClient(configuration.get("apiToken"))
+    this.apiClient = new ApiClient(process.env["API_TOKEN"])
   }
 
   public run(): Promise<void> {
@@ -77,12 +77,15 @@ export class StreamSyncer {
         record: {
           _type: "Incident",
           id: incident["id"],
+          action: incident["status"],
           self: incident["self"],
           status: incident["status"],
           number: incident["incident_number"],
           title: incident["title"],
           createdAt: incident["created_at"],
           htmlUrl: incident["html_url"],
+          acknowledgements: incident["acknowledgements"],
+          assignments: incident["assignments"],
         }
       })
     }

@@ -1,30 +1,31 @@
 {
-  "name": "codeclimate-connector-pagerduty",
-  "version": "0.0.2",
-  "description": "The Code Climate Connector for PagerDuty",
-  "license": "Apache-2.0",
-  "scripts": {
-    "build": "tsc",
-    "test": "jest",
-    "clean": "rm -rf ./lib/",
-    "prepublishOnly": "yarn clean && yarn build && yarn test",
-    "postpublish": "git push && git push --tags"
-  },
-  "files": [
-    "lib/**/*",
-    "README.md",
-    "LICENSE"
-  ],
-  "main": "lib/index.js",
-  "dependencies": {
-    "codeclimate-connector-sdk": "^0.0"
-  },
-  "devDependencies": {
-    "@types/jest": "^25.1.3",
-    "@types/node": "^13.7.4",
-    "jest": "^25.1.0",
-    "nock": "^12.0.1",
-    "ts-jest": "^25.2.1",
-    "typescript": "^3.8.2"
-  }
+ "name": "codeclimate-connector-pagerduty",
+ "version": "0.0.2",
+ "description": "The Code Climate Connector for PagerDuty",
+ "license": "Apache-2.0",
+ "scripts": {
+  "tsc": "./node_modules/typescript/bin/tsc",
+  "build": "tsc",
+  "test": "jest",
+  "clean": "rm -rf ./lib/",
+  "postinstall": "yarn run build",
+  "prepublishOnly": "yarn clean && yarn build && yarn test",
+  "postpublish": "git push && git push --tags"
+ },
+ "files": ["lib/**/*", "README.md", "LICENSE"],
+ "main": "lib/index.js",
+ "dependencies": {
+  "codeclimate-connector-sdk": "^0.0",
+  "typescript": "^3.8.2",
+  "@types/jest": "^25.1.3",
+  "@types/node": "^13.7.4"
+ },
+ "devDependencies": {
+  "@types/jest": "^25.1.3",
+  "@types/node": "^13.7.4",
+  "jest": "^25.1.0",
+  "nock": "^12.0.1",
+  "ts-jest": "^25.2.1",
+  "typescript": "^3.8.2"
+ }
 }
